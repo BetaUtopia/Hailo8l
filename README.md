@@ -3,7 +3,7 @@
 
 ## Get Guide
 ```bash
-git clone --depth 1 https://github.com/BetaUtopia/HowToGuide.git Hailo8l
+git clone https://github.com/BetaUtopia/Hailo8l.git
 ```
 
 ## Training
@@ -18,7 +18,7 @@ pip install ultralytics
 ```
 
 ```bash
-mkdir model && cd model
+cd model
 ```
 
 ```bash
