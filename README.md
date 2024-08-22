@@ -32,7 +32,7 @@ cd runs/detect/retrain_yolov8n/weights
 ```
 
 ```bash
- yolo export model=./best.pt imgsz=640 format=onnx opset=11 
+yolo export model=./best.pt imgsz=640 format=onnx opset=11 
 ```
 
 ```bash
