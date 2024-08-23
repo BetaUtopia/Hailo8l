@@ -98,13 +98,14 @@ hailomz compile yolov8n --hw-arch hailo8l --har ./yolov8n.har
 ```bash
 cd hailo8l
 git clone https://github.com/hailo-ai/hailo-rpi5-examples.git
-cd hailo-rpi5-examples
-source setup_env.sh
+pip install setproctitle
+
 ```
 
 ```bash
+cd hailo-rpi5-examples
+source setup_env.sh
 cd ..
-pip install setproctitle
 ```
 
 ```bash
