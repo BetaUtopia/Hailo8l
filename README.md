@@ -24,7 +24,7 @@ cd model
 ```
 
 ```bash
-yolo detect train data=coco128.yaml model=yolov8n.pt name=retrain_yolov8n project=./runs/detect epochs=1 batch=16
+yolo detect train data=coco128.yaml model=yolov8n.pt name=retrain_yolov8n project=./runs/detect epochs=100 batch=16
 
 ```
 
