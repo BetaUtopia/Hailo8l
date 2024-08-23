@@ -1,12 +1,14 @@
 
 # How to Setup Raspberry Pi 5 with Hailo8l AI Kit using yolov8n on Windows (WSL2 Ubuntu)
 
-## Get Guide
+## WSL Ubuntu
+
+### Get Guide
 ```bash
 git clone https://github.com/BetaUtopia/Hailo8l.git
 ```
 
-## Training
+### Training
 ```bash
 cd Hailo8l
 sudo apt-get update
@@ -26,7 +28,7 @@ yolo detect train data=coco128.yaml model=yolov8n.pt name=retrain_yolov8n projec
 
 ```
 
-## Convert to ONNX
+### Convert to ONNX
 ```bash
 cd runs/detect/retrain_yolov8n/weights   
 ```
@@ -39,7 +41,7 @@ yolo export model=./best.pt imgsz=640 format=onnx opset=11
 cd ~/Hailo8l && deactivate
 ```
 
-## Install Hailo
+### Install Hailo
 ```bash
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
@@ -63,7 +65,7 @@ pip install whl/hailo_model_zoo-2.11.0-py3-none-any.whl
 git clone https://github.com/hailo-ai/hailo_model_zoo.git
 ```
 
-## Install Coco dataset
+### Install Coco dataset
 ```bash
 python hailo_model_zoo/hailo_model_zoo/datasets/create_coco_tfrecord.py val2017
 python hailo_model_zoo/hailo_model_zoo/datasets/create_coco_tfrecord.py calib2017
@@ -73,12 +75,12 @@ python hailo_model_zoo/hailo_model_zoo/datasets/create_coco_tfrecord.py calib201
 cd model/runs/detect/retrain_yolov8n/weights
 ```
 
-## Parse
+### Parse
 ```bash
 hailomz parse --hw-arch hailo8l --ckpt ./best.onnx yolov8n
 ```
 
-## Optimize
+### Optimize
 ```bash
 hailomz optimize --hw-arch hailo8l --har ./yolov8n.har \
     --calib-path /home/sam/.hailomz/data/models_files/coco/2023-08-03/coco_calib2017.tfrecord \
@@ -86,7 +88,26 @@ hailomz optimize --hw-arch hailo8l --har ./yolov8n.har \
     yolov8n
 ```
 
-## Compile
+### Compile
 ```bash
 hailomz compile yolov8n --hw-arch hailo8l --har ./yolov8n.har
 ```
+
+## Raspbery Pi 5
+
+```bash
+cd hailo8l
+git clone https://github.com/hailo-ai/hailo-rpi5-examples.git
+cd hailo-rpi5-examples
+source setup_env.sh
+```
+
+```bash
+cd ..
+pip install setproctitle
+```
+
+```bash
+python hailo-rpi5-examples/basic_pipelines/detection.py -i rpi --hef yolov8n.hef
+```
+
