@@ -81,6 +81,8 @@ hailomz parse --hw-arch hailo8l --ckpt ./best.onnx yolov8n
 ```
 
 ### Optimize
+-Use your own username /home/USER
+
 ```bash
 hailomz optimize --hw-arch hailo8l --har ./yolov8n.har \
     --calib-path /home/sam/.hailomz/data/models_files/coco/2023-08-03/coco_calib2017.tfrecord \
