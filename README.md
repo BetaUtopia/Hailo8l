@@ -118,7 +118,6 @@ cd ..
 python hailo-rpi5-examples/basic_pipelines/detection.py -i rpi --hef yolov8n.hef
 ```
 
-=======
 # How to Setup Raspberry Pi 5 with Hailo8l AI Kit using yolov8n on Windows (WSL2 Ubuntu) Custom Objects and Labels
 
 ## WSL Ubuntu
